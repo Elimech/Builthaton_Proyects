@@ -1,1 +1,1 @@
-# Builthaton_Proyects
+This repository has 3 branches, each one has a proyect from one of the trainees. To see where the branches are, please press the button (it said main) that is over the README file in the main page. Each one has a README file with the name of the trainee, these files contains information about the proyect and how to use it.
