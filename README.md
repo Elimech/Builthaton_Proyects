@@ -1,4 +1,4 @@
-# Visual Memory 2.0
+# Visual Memory 2.1
 
 A modern, AI-powered image search application.
 Extracts text (OCR) and descriptions (BLIP) from images to allow semantic search.
