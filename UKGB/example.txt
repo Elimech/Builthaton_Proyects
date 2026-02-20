@@ -1,0 +1,5 @@
+The Artemis Program represents a new era of lunar exploration led by NASA. Unlike the Apollo missions, Artemis aims to establish a sustainable human presence on the Moon. This mission requires international collaboration between space agencies such as the ESA and JAXA.
+
+A key component of this architecture is the Lunar Gateway, a small space station that will orbit the Moon. The Gateway will serve as a communication hub and a staging point for deep space missions. Private companies like SpaceX are developing the Starship HLS to transport astronauts from the Gateway to the lunar surface.
+
+The ultimate goal is to extract lunar resources, specifically water ice found in permanently shadowed craters. This ice can be processed into oxygen and rocket fuel, enabling future missions to Mars. The synergy between government vision and private innovation is transforming the Moon into the next frontier for human industry.

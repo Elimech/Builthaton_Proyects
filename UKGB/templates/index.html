@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Universal Knowledge Graph Builder - Dark</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #121212; 
+            color: #e0e0e0; 
+        }
+        .section { 
+            background: #1e1e1e; 
+            border: 1px solid #333; 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin-bottom: 20px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+        }
+        .disabled { opacity: 0.4; pointer-events: none; }
+        
+        .form-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        input[type="text"], input[type="file"], textarea {
+            background-color: #2c2c2c;
+            border: 1px solid #444;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        button, .btn-danger { 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            transition: 0.3s;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; 
+            height: 40px; 
+            box-sizing: border-box;
+        }
+
+        .btn-primary { 
+            background-color: #3700b3; 
+            color: white; 
+        }
+        .btn-primary:hover { 
+            background-color: #6200ee; 
+        }
+
+        .btn-danger { 
+            background-color: #cf6679; 
+            color: #121212; 
+        }
+        .btn-danger:hover { 
+            background-color: #ff4444; 
+            color: white;
+        }
+
+        iframe { 
+            border: 1px solid #333; 
+            border-radius: 8px; 
+            background: #121212; 
+        }
+        .response-box { 
+            background: #212121; 
+            padding: 15px; 
+            border-left: 5px solid #bb86fc; 
+            margin-top: 15px; 
+            border-radius: 4px; 
+            color: #bb86fc;
+        }
+        h1, h2, h3 { color: #bb86fc; }
+        hr { border: 0; border-top: 1px solid #333; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+    <h1>Universal Knowledge Graph Builder</h1>
+
+    <div class="section">
+        <h3>1. Upload Data</h3>
+        <form method="POST" enctype="multipart/form-data" class="form-container">
+            <input type="file" name="file">
+            <input type="text" name="url" placeholder="URL (https://...)" style="flex-grow: 1;">
+            
+            <button type="submit" name="create_graph" class="btn-primary">Create Graph</button>
+            
+            {% if graph_ready %}
+                <a href="{{ url_for('reset') }}" class="btn-danger">Delete Graph</a>
+            {% endif %}
+        </form>
+    </div>
+
+    <div class="section">
+        <h2>Graph Visualization</h2>
+        {% if show_graph %}
+            <iframe src="{{ url_for('static', filename='graph.html') }}?v={{ range(1, 9999) | random }}"
+                    width="100%" height="600px"></iframe>
+        {% else %}
+            <div style="height: 200px; display: flex; align-items: center; justify-content: center; border: 2px dashed #444;">
+                <p style="color: #888;">No graph loaded yet.</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="section {% if not graph_ready %}disabled{% endif %}">
+        <h3>2. Query the AI</h3>
+        <form method="POST" class="form-container">
+            <input type="text" name="question" placeholder="What is the relationship between trees and oxygen?" style="flex-grow: 1;">
+            <button type="submit" name="ask_question" class="btn-primary">Ask</button>
+        </form>
+
+        {% if response %}
+            <div class="response-box">
+                <strong>AI Response:</strong>
+                <p>{{ response }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
