@@ -1,4 +1,4 @@
-Of course! Here is the professional README.md in English, optimized for your GitHub repository and including the specific instructions for Streamlit Cloud deployment.
+
 
 🪄 Transcription & Slide Creator
 This project is an AI-powered web application that transforms audio files or real-time recordings into fully structured PowerPoint presentations and PDF documents.
